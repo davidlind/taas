@@ -7,7 +7,6 @@ import (
 	"log"
 	"io/ioutil"
 	"strconv"
-	//"fmt"
 )
 
 type Insult struct {
