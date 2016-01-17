@@ -26,9 +26,6 @@ func getInsults() []Insult {
 }
 
 func main() {
-	//insults := make([]Insult, 2)
-	//insults[0] = Insult{ID: 0, Text: "Sorry, no."}
-	//insults[1] = Insult{ID: 1, Text: "Fuck off."}
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", Index)
 	router.HandleFunc("/{id}", Index)
