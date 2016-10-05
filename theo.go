@@ -24,6 +24,8 @@ func getInsults() []Insult {
 	return insults
 }
 
+func getRandomInsult() { }
+
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", Index)
