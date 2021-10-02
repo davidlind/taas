@@ -37,9 +37,11 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	insults := getInsults()
 	vars := mux.Vars(r)
 	id := vars["id"]
-	id_int, err := strconv.Atoi(id)
-	if err != nil {
+	if id != "" {
+	   id_int, err := strconv.Atoi(id)
+	      if err != nil {
 		panic(err)
-	}
-	json.NewEncoder(w).Encode(insults[id_int])
+	      }
+	  json.NewEncoder(w).Encode(insults[id_int])
+        }
 }
