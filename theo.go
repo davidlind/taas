@@ -1,16 +1,16 @@
 package main
 
 import (
-	"net/http"
 	"encoding/json"
 	"github.com/gorilla/mux"
-	"log"
 	"io/ioutil"
+	"log"
+	"net/http"
 	"strconv"
 )
 
 type Insult struct {
-	ID int `json:"id"`
+	ID   int    `json:"id"`
 	Text string `json:"text"`
 }
 
@@ -38,10 +38,10 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id := vars["id"]
 	if id != "" {
-	   id_int, err := strconv.Atoi(id)
-	      if err != nil {
-		panic(err)
-	      }
-	  json.NewEncoder(w).Encode(insults[id_int])
-        }
+		id_int, err := strconv.Atoi(id)
+		if err != nil {
+			panic(err)
+		}
+		json.NewEncoder(w).Encode(insults[id_int])
+	}
 }
