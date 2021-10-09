@@ -39,7 +39,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	insults := getInsults()
 	vars := mux.Vars(r)
 	id := vars["id"]
-	if id == "" {
+	if id == "" || id == "favicon.ico" {
 		id = strconv.Itoa(rand.Intn(len(insults)))
 	}
 	id_int, err := strconv.Atoi(id)
