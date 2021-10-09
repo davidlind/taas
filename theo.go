@@ -2,11 +2,13 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/gorilla/mux"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"net/http"
 	"strconv"
+
+	"github.com/gorilla/mux"
 )
 
 type Insult struct {
@@ -37,11 +39,13 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	insults := getInsults()
 	vars := mux.Vars(r)
 	id := vars["id"]
-	if id != "" {
-		id_int, err := strconv.Atoi(id)
-		if err != nil {
-			panic(err)
-		}
-		json.NewEncoder(w).Encode(insults[id_int])
+	if id == "" {
+		id = strconv.Itoa(rand.Intn(len(insults)))
 	}
+	id_int, err := strconv.Atoi(id)
+	if err != nil {
+		panic(err)
+	}
+	json.NewEncoder(w).Encode(insults[id_int])
+
 }
